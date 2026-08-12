@@ -1,0 +1,39 @@
+{
+  "config" : {
+    "analyzer" : "MyCustomAnalyzer",
+    "query_parser" : "SBERT",
+    "top_n" : 100,
+    "title_boost" : 1.0,
+    "similarity" : "BM25",
+    "reranker" : "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "fields" : [ "title", "abstract" ]
+  },
+  "metrics" : {
+    "queries" : 14977,
+    "recall@1" : 0.64071576417173,
+    "recall@5" : 0.7659077251786072,
+    "recall@10" : 0.7951525672698138,
+    "recall@100" : 0.8391533684983642,
+    "precision@1" : 0.64071576417173,
+    "precision@5" : 0.15318154503573786,
+    "precision@10" : 0.07951525672699003,
+    "f1@1" : 0.64071576417173,
+    "mrr@5" : 0.690784758852462,
+    "map" : 0.6969808549620757,
+    "ndcg@5" : 0.7096967798541077,
+    "ndcg@10" : 0.7192259737837103,
+    "ndcg@100" : 0.7291103769214868,
+    "per_query_stats" : {
+      "mrr@5" : {
+        "min" : 0.0,
+        "median" : 1.0,
+        "max" : 1.0
+      },
+      "ndcg@10" : {
+        "min" : 0.0,
+        "median" : 1.0,
+        "max" : 1.0
+      }
+    }
+  }
+}

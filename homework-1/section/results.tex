@@ -1,0 +1,46 @@
+\section{Results and Discussion}
+\label{sec:results}
+
+\subsection{Main Results}
+Table~\ref{tab:main-results} summarizes representative configurations from the run-analysis sheets performed. The table is not meant to list every run we have made, instead, it selects runs that cover the main experimental families: analyzer tuning, hybrid retrieval, single-stage neural reranking and alternative rerankers. The comparison uses the English run-analysis sheet with 14,977 evaluated queries, the ones of the \texttt{train\_set} and all metric values are rounded to three decimals.\\
+In the analyzer rows, \texttt{MyEnglishAnalyzer\_V2} denotes the Lucene analyzer using the RankSNL large stopword list, ASCII folding, lowercasing, English possessive removal and KStem. \texttt{Searcher} V2 denotes the BM25 searcher variant that adds Boolean \texttt{SHOULD} clauses.
+
+\begin{table*}[htbp]
+    \centering
+    \footnotesize
+    \caption{Representative English run-analysis results performed on \texttt{en\_train\_set.}}
+    \label{tab:main-results}
+    \begin{tabular}{p{2.4cm} p{3.0cm} p{6.2cm} c c}
+        \toprule
+        Family & Run label & Key configuration & MRR@5 & Recall@100 \\
+        \midrule
+        Analyzer tuning & Analyzer V2 & BM25 retrieval with \texttt{MyEnglishAnalyzer\_V2}, \texttt{Searcher} V2, and BGE-V1 query expansion & 0.503 & 0.796 \\
+        Analyzer tuning & Analyzer V1.12 & BM25 retrieval with KStem and an EBSCOhost/MEDLINE/CINAHL stoplist variant & 0.450 & 0.783 \\
+        Retrieval only & Hybrid A & BGE-M3 hybrid retrieval with dense, sparse, and ColBERT weights of $0.35$, $0.15$, and $0.50$ & 0.557 & 0.837 \\
+        Retrieval only & Hybrid B & BGE-M3 hybrid retrieval with dense, sparse, and ColBERT weights of $0.50$, $0.15$, and $0.35$ & 0.557 & 0.839 \\
+        Best model reranking & Nemotron top-400 & \texttt{bge\_m3\_hybrid\_513} candidates reranked with \nolinkurl{nvidia/llama-nemotron-rerank-1b-v2} & 0.694 & 0.893 \\
+        Best model reranking & Nemotron top-1000 & \texttt{bge\_m3\_hybrid\_513} candidates reranked with \nolinkurl{nvidia/llama-nemotron-rerank-1b-v2} & 0.702 & 0.911 \\
+        Alternative rerankers & Qwen3-4B & \texttt{bge\_m3\_hybrid\_513} candidates reranked with Qwen3-reranker-4B & 0.662 & 0.839 \\
+        Alternative rerankers & GTE-ModernBERT & \texttt{bge\_m3\_hybrid\_513} candidates reranked with \nolinkurl{Alibaba-NLP/gte-reranker-modernbert-base} & 0.652 & 0.852 \\
+        \bottomrule
+    \end{tabular}
+\end{table*}
+
+The results show a consistent progression from lexical retrieval toward neural ranking. The best retrieval-only configuration reaches an MRR@5 of 0.557, while the strongest reranked run reported in Table~\ref{tab:main-results} reaches 0.702. The largest observed step comes from adding 
+\\\texttt{nvidia/llama-nemotron-rerank-1b-v2}: the top-1000 Nemotron run reaches an MRR@5 of 0.702 and Recall@100 of 0.911, compared with 0.557 and 0.839 for the retained hybrid retriever. We do not have traced and reported confidence intervals, paired significance tests, or effect sizes, so these differences are discussed as observed metric differences only. Due to limited computing resources and time constraints we have not been able to perform a meaningful run on the english training dataset: it would have demanded more than 40 hours of computation on our RTX 3090 for a run on the top-k=1000 reranking).
+
+For the runs performed in the \texttt{dev\_set} we provide a separate multilingual check rather than a single aggregate score. On the English development split, the non-fine-tuned Nemotron baseline reaches 0.675 MRR@5 and 0.835 Recall@100 when reranking the top 100 candidates; 0.692 MRR@5 and 0.909 Recall@100 when reranking the top 1000 candidates. The fine-tuned Nemotron LoRA run on the same English development split reaches 0.716 MRR@5 and 0.913 Recall@100. The corresponding fine-tuned development runs reach 0.76 MRR@5 and 0.929 Recall@100 for French and 0.67 MRR@5 and 0.889 Recall@100 for German with the top-2000 candidate setting.
+
+\subsection{Ablation / Run Analysis}
+
+\paragraph{Analyzer tuning:}
+We initially explored stronger English analyzers and several stemming and stopword variants in order to improve lexical matching between short social-media posts and scientific abstracts. This family peaks at an MRR@5 of 0.503 with \texttt{MyEnglishAnalyzer\_V2}, while the other analyzer variants remain around the 0.45-0.50 range. These runs were useful in validating the preprocessing choices but they also showed that text normalization alone is not enough to bridge the semantic gap between informal claims and academic documents. Analyzer tuning yields measurable improvements but its impact is limited when compared with semantic retrieval and neural reranking.
+
+\paragraph{Hybrid retrieval without reranking:}
+A shift from analyzer-focused experiments to hybrid retrieval leads to a substantially larger improvement. The two best retrieval-only systems, reported in Table~\ref{tab:main-results} as Hybrid A and Hybrid B, both reach an MRR@5 of about 0.557 with recall@100 between 0.837 and 0.839. The difference between them lies in the balance between the dense and ColBERT components while the sparse contribution is kept fixed. This indicates that combining dense, sparse and ColBERT-style signals already produces a strong candidate set before any reranking is applied. At the same time the very small difference between the two configurations suggests that, once the hybrid formulation is in place, the exact internal weighting matters less than the transition away from purely lexical retrieval. Hybrid retrieval is the first major step change in effectiveness and provides the strongest retrieval-only foundation for the full pipeline.
+
+\paragraph{Single-stage reranking with Nemotron:}
+Adding \texttt{nvidia/llama-nemotron-rerank-1b-v2} on top of the hybrid candidates produces the largest isolated gain in MRR@5. The representative Nemotron runs increase from the 0.557 range of the retrieval-only systems to 0.694 and 0.702, while recall@100 also rises from about 0.839 to as high as 0.911. We also observe a limited but consistent benefit from increasing the number of candidates exposed to the reranker: moving from the top-400 to the top-1000 setting slightly improves both MRR@5 and recall@100. This suggests that the reranker can exploit a broader candidate pool enduring the additional noise bringing further, although diminishing, gains. In our experiments, the threshold at which the MRR no longer showed signs of improvement was around topk=2500; however, it is also true that it is unlikely to find many more relevant documents that are easy to detect at those depths.
+
+\paragraph{Alternative rerankers:}
+To verify that the gains were not tied to a single model, we also evaluated other rerankers, including \texttt{Qwen/Qwen3-Reranker-4B} and \\\texttt{Alibaba-NLP/gte-reranker-modernbert-base}. Both models clearly outperform the retrieval-only baseline in terms of MRR@5, reaching values of 0.662 and 0.652, respectively. However, they remain below the Nemotron runs, especially on MRR@5, which suggests weaker ranking quality in the first positions of the final list. Even so these experiments confirm that the hybrid retriever produces candidate sets that can be improved by different neural rerankers. Alternative rerankers validate the overall pipeline design but Nemotron is the strongest first-stage reranker among the models we tested.

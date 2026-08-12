@@ -1,0 +1,2 @@
+metric,statistic,p_value,systems,queries,note
+ndcg100,,,1,6076,Friedman test requires at least three systems.

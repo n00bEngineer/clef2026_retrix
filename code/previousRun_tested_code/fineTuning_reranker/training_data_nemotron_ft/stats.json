@@ -1,0 +1,56 @@
+{
+  "train_groups": 29179,
+  "dev_groups": 1497,
+  "train_from_2026": 13480,
+  "train_from_2025": 15699,
+  "dev_from_2026_only": true,
+  "num_hard_neg": 5,
+  "num_soft_neg": 5,
+  "neg_offset": 1,
+  "soft_neg_offset": 10,
+  "train_group_size_for_training": 11,
+  "domain_shift_warning": true,
+  "quality_per_split": {
+    "2026": {
+      "groups": 14977,
+      "overlap_rate": 1.0,
+      "hard_neg_avg_rank": 3.76,
+      "skip_no_gt": 0,
+      "skip_pos_missing": 0,
+      "skip_no_run": 0,
+      "skip_few_negs": 0,
+      "skip_no_soft": 0
+    },
+    "2025_subtask4b_query_tweets_train": {
+      "groups": 12853,
+      "overlap_rate": 1.0,
+      "hard_neg_avg_rank": 3.81,
+      "skip_no_gt": 0,
+      "skip_pos_missing": 0,
+      "skip_no_run": 0,
+      "skip_few_negs": 0,
+      "skip_no_soft": 0
+    },
+    "2025_subtask4b_query_tweets_dev": {
+      "groups": 1400,
+      "overlap_rate": 1.0,
+      "hard_neg_avg_rank": 3.82,
+      "skip_no_gt": 0,
+      "skip_pos_missing": 0,
+      "skip_no_run": 0,
+      "skip_few_negs": 0,
+      "skip_no_soft": 0
+    },
+    "2025_subtask4b_query_tweets_test_gold": {
+      "groups": 1446,
+      "overlap_rate": 1.0,
+      "hard_neg_avg_rank": 3.73,
+      "skip_no_gt": 0,
+      "skip_pos_missing": 0,
+      "skip_no_run": 0,
+      "skip_few_negs": 0,
+      "skip_no_soft": 0
+    }
+  },
+  "note": "Nemotron NON usa prefissi query. Solo pulizia testo. train_group_size=11. hard_neg=errori modello base (rank 1-6). soft_neg=met\u00e0 classifica (rank 10-15)."
+}

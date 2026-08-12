@@ -1,0 +1,11 @@
+{
+  "total": 89862,
+  "train": 80880,
+  "dev": 8982,
+  "positives": 14977,
+  "negatives": 74885,
+  "ratio_neg_pos": 5.0,
+  "corpus_2026_size": 10000,
+  "num_hard_neg": 5,
+  "neg_offset": 0
+}

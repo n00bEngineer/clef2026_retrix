@@ -1,0 +1,125 @@
+\documentclass{ceurart}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+\usepackage{acronym}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{figure/}}
+
+\usepackage[most]{tcolorbox}
+\newtcolorbox{promptbox}{
+  colback=gray!5!white,
+  colframe=gray!75!black,
+  left=5pt,
+  right=5pt,
+  top=5pt,
+  bottom=5pt,
+  arc=2pt,
+  boxrule=0.5pt,
+  fonttitle=\bfseries,
+  title=LLM Prompt
+}
+
+\renewcommand{\acffont}[1]{\textsl{#1}}
+
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% Rights management information.
+%% CC-BY is default license.
+  \copyrightyear{2026}
+  \copyrightclause{Copyright for this paper by its authors.\\
+  Use permitted under Creative Commons License Attribution 4.0
+  International (CC BY 4.0).}
+
+%%
+%% This command is for the conference information
+  \conference{``Search Engines'', course at the master degree in ``Computer Engineering'', Department of Information Engineering, and at the master degree in ``Data Science'', Department of Mathematics ``Tullio Levi-Civita'', University of Padua, Italy. Academic Year 2025/2026}
+
+%%
+%% The "title" command
+  \title{SEUPD@CLEF: Team RETRIX on Source Retrieval for Scientific Web Claims}
+  \title[mode=sub]{Notebook for the CheckThat! Lab at CLEF 2026}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+  \author[1]{Fabio Baldan}[%
+    email=fabio.baldan.1@studenti.unipd.it
+  ]
+  \cormark[1]
+
+  \author[1]{Davide Donati}[%
+    email=davide.donati@studenti.unipd.it
+  ]
+
+  \author[1]{Alvise Garberino}[%
+    email=alvise.garberino@studenti.unipd.it
+  ]
+
+  \author[1]{Giancarlo Padoan}[%
+    email=giancarlo.padoan@studenti.unipd.it
+  ]
+
+  \author[1]{Marco Tessari}[%
+    email=marco.tessari.8@studenti.unipd.it
+  ]
+
+  \author[1]{Nicola Ferro}[%
+    email=nicola.ferro@unipd.it
+  ]
+
+%% Footnotes
+\cortext[1]{Corresponding author.}
+\address[1]{University of Padua, Italy}
+
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+  \begin{abstract}
+    We present the results of the RETRIX group for the CheckThat! Lab at CLEF 2026 Task 1, whose goal is to identify the scientific paper implicitly referenced in a social media post. The input consists of short, noisy and usually informal posts that mention scientific findings without providing explicit links or citations. Our pipeline first translates non-English posts into English, then expands them using an embedding model and terms extracted from the top five documents ranked by similarity. After that it is applied a hybrid retrieval system that combines dense FAISS search with sparse lexical matching and ColBERT multi-vector scoring. Finally, we perform neural reranking with a fine-tuned cross-encoder model.
+  \end{abstract}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+  \begin{keywords}
+    Fact Checking \sep Scientific Document Retrieval \sep Social Media Fact Verification \sep Neural Reranking \sep CLEF \sep Information Retrieval \sep Cross Encoder
+
+  \end{keywords}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+  \maketitle
+
+
+  \input{section/introduction}
+
+  \input{section/related}
+
+  \input{section/methodology}
+
+  \input{section/setup}
+
+  \input{section/results}
+
+  \input{section/conclusion}
+
+%% Define the bibliography file to be used
+  \bibliography{bibliography,proceedings}
+
+  \input{acronyms}
+
+
+\end{document}

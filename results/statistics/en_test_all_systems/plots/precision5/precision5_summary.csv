@@ -1,0 +1,2 @@
+metric,metric_label,system,queries,mean,median,std_dev,ci_low,ci_high,min,max
+precision5,Precision@5,nemotronlora_enFINALtopk2000AUTHORS_biEncoderTopk3000,6076,0.16050032916392365,0.2,0.07962884995243621,0.15849772005282187,0.16250293827502543,0.0,0.2

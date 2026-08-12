@@ -1,0 +1,2 @@
+metric,metric_label,system,queries,mean,median,std_dev,ci_low,ci_high,min,max
+ap,AP / MAP,nemotronlora_enFINALtopk2000AUTHORS_biEncoderTopk3000,6076,0.7202355226161781,1.0,0.39910465016913504,0.7101983236714589,0.7302727215608973,0.0,1.0

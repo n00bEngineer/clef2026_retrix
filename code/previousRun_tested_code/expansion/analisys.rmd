@@ -1,0 +1,36 @@
+# --- TUNING RESULTS ANALYSIS ---
+```{r}
+
+# 1. Loading data
+data <- read.csv("tuning_results.csv")
+
+# Removal of failed trials (Recall = 0)
+clean_data <- data[data$recall100 > 0, ]
+
+cat("Analysis on", nrow(clean_data), "valid trials.\n")
+
+# 2. Correlations
+correlations <- cor(clean_data)
+cat("\n--- Correlation with Recall@100 ---\n")
+print(correlations[,"recall100"])
+
+# 3. Linear model
+# Parameter influence on result (keeping the others fixed)
+model <- lm(recall100 ~ threshold + max_terms + w1 + w2 + w3, data = clean_data)
+
+cat("\n--- Parameter significance ---\n")
+summary_model <- summary(model)
+print(summary_model$coefficients)
+
+# 4. Quick view
+par(mfrow=c(2,3))
+
+# Scatter plots for variables vs recall
+plot(clean_data$threshold, clean_data$recall100, main="Threshold vs Recall", col="blue", pch=20)
+plot(clean_data$max_terms, clean_data$recall100, main="Max Terms vs Recall", col="red", pch=20)
+plot(clean_data$w1, clean_data$recall100, main="W1 vs Recall", col="darkgreen", pch=20)
+plot(clean_data$w2, clean_data$recall100, main="W2 vs Recall", col="orange", pch=20)
+plot(clean_data$w3, clean_data$recall100, main="W3 vs Recall", col="purple", pch=20)
+
+par(mfrow=c(1,1))
+```

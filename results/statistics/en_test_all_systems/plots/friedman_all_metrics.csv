@@ -1,0 +1,14 @@
+metric,statistic,p_value,systems,queries,note
+recall1,,,1,6076,Friedman test requires at least three systems.
+recall5,,,1,6076,Friedman test requires at least three systems.
+recall10,,,1,6076,Friedman test requires at least three systems.
+recall100,,,1,6076,Friedman test requires at least three systems.
+precision1,,,1,6076,Friedman test requires at least three systems.
+precision5,,,1,6076,Friedman test requires at least three systems.
+precision10,,,1,6076,Friedman test requires at least three systems.
+f1_1,,,1,6076,Friedman test requires at least three systems.
+mrr5,,,1,6076,Friedman test requires at least three systems.
+ap,,,1,6076,Friedman test requires at least three systems.
+ndcg5,,,1,6076,Friedman test requires at least three systems.
+ndcg10,,,1,6076,Friedman test requires at least three systems.
+ndcg100,,,1,6076,Friedman test requires at least three systems.

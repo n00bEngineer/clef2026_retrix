@@ -1,0 +1,4 @@
+metric,group1,group2,mean_diff_group2_minus_group1,median_diff_group2_minus_group1,ci_low,ci_high,wins_group2,losses_group2,ties,wilcoxon_statistic,p_value,p_holm,reject_holm
+recall100,bi_encoder_results_bge_large_frFINALen_topk3000,nemotronlora_frFINAL_entopk2000AUTHORS_biEncoderTopk3000,0.08114754098360656,0.0,0.06450876310100884,0.09778631886620429,107,8,1105,9304.0,2.6612755088183413e-20,7.983826526455024e-20,True
+recall100,bi_encoder_results_bge_large_frFINALen_topk3000,nemotronlora_frFINALtopk2500_biEncoderTopk3000,0.07950819672131147,0.0,0.06253665325615788,0.09647974018646506,108,11,1101,12771.0,6.003197492717371e-19,1.2006394985434742e-18,True
+recall100,nemotronlora_frFINAL_entopk2000AUTHORS_biEncoderTopk3000,nemotronlora_frFINALtopk2500_biEncoderTopk3000,-0.001639344262295082,0.0,-0.007211574244946227,0.003932885720356062,5,7,1208,6072.5,0.5637028616507731,0.5637028616507731,False

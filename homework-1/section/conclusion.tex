@@ -1,0 +1,22 @@
+\section{Conclusions and Future Work}
+\label{sec:conclusion}
+
+The results of the described system support three main conclusions. 
+
+First, analyzer and BM25 tuning provide a useful lexical baseline, especially thanks to its light computing print, with the best analyzer-focused run reaching 0.503 MRR@5 and 0.796 Recall@100 in the English run analysis. 
+
+Second, moving to BGE-M3 hybrid retrieval produces a stronger candidate generator: the retained configuration, \texttt{bge\_m3\_hybrid\_513}, reaches 0.557 MRR@5 and 0.839 Recall@100.
+
+Third, reranking the hybrid candidates with \texttt{nvidia/llama-nemotron-rerank-1b-v2} gives the largest observed improvement among the reported single-stage runs, reaching 0.702 MRR@5 and 0.911 Recall@100 when reranking the top 1000 candidates. Alternative rerankers such as Qwen3-reranker-4B and \texttt{Alibaba-NLP/gte-reranker-modernbert-base} also improve over retrieval alone, but remain below the Nemotron runs in the reported MRR@5 values.
+
+The development results show that fine-tuning the Nemotron reranker is promising. Fine-tuning improves the performance by a small but appreciable amount (average of +0.03 of MRR@5 in our experiments). Nevertheless we recognize the limits of our knowledge, so a higher-quality fine-tuning that can bring better results is certainly possible.
+
+\subsection{Limitations and Future Work}
+The main limitation of the current evaluation is that the neural stages are computationally demanding: the documented pipeline relies on CUDA-capable hardware for BGE-M3 encoding and cross-encoder reranking, which makes latency and candidate-depth trade-offs an important practical concern.
+
+Future work should therefore focus on a more systematic validation of the current pipeline. First, the reranking and retrieval comparisons should be complemented with paired statistical tests and per-language error analysis. Second, the candidate depth used for Nemotron reranking should be studied together with runtime and memory costs, since deeper reranking improves Recall@100 and MRR@5 in the available runs but increases the amount of neural scoring required. Third, the existing fine-tuning code for rerankers and retrievers should be evaluated more systematically with hard negatives. We were fortunate enough to have access to the CLEF CheckThat! Subtask 4b datasets, which saved us from having to devote some of our resources and time to studying techniques such as data augmentation; however, it is plausible that these techniques could improve the quality of fine-tuning, along with a more in-depth study of fine-tuning techniques using hard negatives. Finally, the translation and query-expansion stages should be analyzed per language, since the current results suggest that the same pipeline can be applied across English, French, and German but do not yet isolate where cross-lingual errors enter the ranking process.
+
+
+
+\section {Declaration on Generative AI}
+During the writing of this paper the authors used Grammarly and DeepL for grammar and spelling checks and Claude Sonnet 4.6 for writing-style improvement, citation management and formatting assistance. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the publications content.

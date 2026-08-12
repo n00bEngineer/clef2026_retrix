@@ -1,0 +1,27 @@
+\section{Conclusions and Future Work}
+\label{sec:conclusion}
+
+The results of the described system support three main conclusions.
+
+First, analyzer and BM25 tuning provide a useful lexical baseline, especially thanks to its low computational footprint, with the best analyzer-focused run reaching 0.503 MRR@5 and 0.796 Recall@100 in the English run analysis.
+
+Second, moving to BGE-M3 hybrid retrieval produces a stronger candidate generator: the retained configuration, bge\_m3\_hybrid\_513, reaches 0.557 MRR@5 and 0.839 Recall@100.
+
+Third, reranking the hybrid candidates with nvidia/llama-nemotron-rerank-1b-v2 gives the largest observed improvement among the reported single-stage runs, reaching 0.702 MRR@5 and 0.911 Recall@100 when reranking the top 1000 candidates. Alternative rerankers such as Qwen3-reranker-4B and Alibaba-NLP/gte-reranker-modernbert-base also improve results, but remain below the Nemotron runs in the reported MRR@5 values.
+
+The development results show that fine-tuning the Nemotron reranker is promising. Fine-tuning improves performance by a small but appreciable amount (an average gain of 0.03 MRR@5 points in our experiments).
+
+
+Several directions emerge for future improvement. 
+First, analyzing and spending more time for a better fine-tuning of the reranker and all other components of the system would probably bring better results. A lot of techniques like data augmentation can be experimented and there is room for improvement.
+
+A second direction concerns the queries that remain entirely missing after reranking. These cases cannot be recovered by any reranker because the correct publication is absent from the candidate set. Manual inspection of a sample suggests three dominant failure patterns: claims referencing quantitative findings not mentioned in the abstract, implicit references that name no concrete entities and translation drift that changes the intended meaning of domain-specific terms. Addressing the first two patterns would probably require to manage content beyond title, abstract and authors but also other metadata. Addressing the translation failure pattern points toward a dedicated post-editing step or a domain-adapted translation model fine-tuned on biomedical text.
+
+Finally, the German dataset achieves MRR@5 of 0.68 in the evaluation results: a wide gap relative to English and French. Controlled ablations that isolate translation errors from retrieval errors would clarify how much of this gap is attributable to the translation stage versus vocabulary mismatch in the retrieval stage itself.
+
+
+\section {Declaration on Generative AI}
+During the writing of this paper the authors used Grammarly and DeepL for grammar and spelling checks and Claude Sonnet 4.6 for writing-style improvement, citation management, and formatting assistance. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the publication content.
+
+
+\clearpage

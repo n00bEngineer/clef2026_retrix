@@ -1,0 +1,2 @@
+Da questo path usa il comando, elencando tutti i file da integrare:
+zip predictions.zip predictions_en.tsv

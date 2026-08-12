@@ -1,0 +1,59 @@
+\section{Group Members Contribution}
+
+% For each group member, describe in detail the contribution to the project.
+
+\begin{description}
+	\item[Fabio Baldan] has contributed to this project by:
+    \begin{enumerate}
+        \item Helping designing and implementing the initial BM25-basic pipeline;
+        \item Writing and revising some chapters of the documentation based on the actual code and on the concepts learned during the project development;
+        \item Tracking and reviewing the annotation-part for the runs with various systems;
+        \item Trying various models for the re-rank part to enhance the MRR@5;
+        \item Implementing a custom evaluator to focus on metrics that matter the most;
+        \item Reviewing and improving the query-expansion;
+        \item Fine-tuning the re-reranker to improve the MRR@5 and assure an advantage if compared with the default one.
+    \end{enumerate}
+
+    \item[Davide Donati] has contributed to this project by:
+    \begin{enumerate}
+        \item Helping designing and implementing the initial BM25 basic pipeline;
+        \item Implementing a BooleanQuery-based parsing in \texttt{Searcher.java} to separate the original tweet and expanded terms into different clauses with tailored boosts (and applying field filters for venue/authors), improving retrieval precision;
+        \item Implementing and testing the multilingual query-expansion pipeline (e.g. \\\texttt{query\_expansion\_multilingual.py}, tested with \texttt{PROVEDAVIDE.py}) and fixing issues found during integration;
+        \item Adding a PRF (pseudo-relevance feedback) implementation and accompanying AI-assisted documentation/examples (PRF code is available in the discarded-code area for reference and analysis);
+        \item Contributing to documentation and write-ups;
+        \item Keeping track of experimental runs and results for the systems he developed and tested.
+    \end{enumerate}
+
+    \item[Alvise Garberino] has contributed to this project by:
+    \begin{enumerate}
+        \item Helping design and implement the initial BM25-based retrieval pipeline;
+        \item Helping and searching the best models and techniques to implement a re-ranker model;
+        \item Implementing and improving the re-ranker fine-tuning pipeline, including data augmentation through back-translation, hard-negative construction/mining, and data-distillation support;
+        \item Contributing to the evaluation workflow by tracking experimental runs, analyzing results, and supporting checkpoint evaluation;
+        \item Contributing to the Java support code and documentation, including refactoring/query-model improvements and JavaDoc updates;
+        \item Writing and revising parts of the documentation, especially the introduction, related work, results, conclusion, and experimental setup sections, while also selecting and integrating the corresponding academic references.
+    \end{enumerate}
+
+    \item[Giancarlo Padoan] has contributed to this project by:
+    \begin{enumerate}
+        \item Designing, implementing and fixing the initial basic pipeline;
+        \item Writing and correcting some chapters of the documentation based on the actual code and on the notions learned while building the project;
+        \item Designing and implementing an hybrid-retrieval system to enhance recall, which is the core of the final architecture;
+        \item Trying various models for the embedding-representation part to enhance the MRR@5;
+        \item Implementing the first version of query-expansion functionality, and improving it by testing different techniques;
+        \item Tested different scoring function for combining the hybrid-retrieval scores;
+        \item Testing various cross-encoder models for the re-ranking stage of the pipeline;
+        \item Keeping track of the results of the systems that he tried.
+    \end{enumerate}
+
+    \item[Marco Tessari] has contributed to this project by:
+    \begin{enumerate}
+        \item Helping designing and implementing the initial BM25-basic pipeline;
+        \item Improved the performance of the English Analyzer (text-processing, stemmer, filters and stopwords);
+        \item Writing part of the docs and helping other members by reviewing their writes;
+        \item Keeping track of the results of the systems that he tried;
+        \item Helping and searching the best models and techniques to implement an embedding model;
+        \item Experimenting with word2vec static embeddings for query expansion;
+        \item Helping to find the best weights to enhance recall in the hybrid-retrieval system.
+    \end{enumerate}
+\end{description}

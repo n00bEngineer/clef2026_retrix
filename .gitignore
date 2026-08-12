@@ -1,0 +1,94 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+
+# LaTeX files
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+*.abs
+*.fdb_latexmk
+*.fls
+*.xmpdata
+
+# Matlab
+*.m~
+*.asv
+*.mex*
+
+# IntelliJ Idea
+*.iml
+.idea/
+
+# Java
+*.class
+target/
+log/
+
+# Tomcat Shell files
+tomcat-logs/
+
+# TIRA
+.tira
+
+# Package Files 
+*.jar
+*.war
+*.ear
+*.tar.gz
+*.rar
+
+
+# OSX
+.DS_Store
+
+# Ignore everything in data folder
+data/*
+
+#Virtual environments
+myenv/
+
+# But do NOT ignore these specific files
+!/data/collection_data.json
+!/data/expanded_queries.json
+
+index/
+
+# Python
+__pycache__/
+
+# Matplotlib / plotting caches
+results/statistics/**/.tmp-plot-home/
+results/statistics/**/.config/matplotlib/
