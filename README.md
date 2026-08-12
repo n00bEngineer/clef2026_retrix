@@ -1,24 +1,13 @@
 # Retrix - Search Engines 2025/2026
-
-This repository contains the Retrix system for the Search Engines course project
-at the University of Padua. The project participates in CLEF 2026 CheckThat!
+This repository contains the Retrix system that obtained the 5th place at CLEF 2026 CheckThat!
 Task 1, Source Retrieval for Scientific Web Claims. **Note that this README has the only purpose of showing the right order of use of our retrieval system, paths can vary.**
 
-*Search Engines* is a course of the
-
-* [Master Degree in Computer Engineering](https://degrees.dei.unipd.it/master-degrees/computer-engineering/) of the  [Department of Information Engineering](https://www.dei.unipd.it/en/), [University of Padua](https://www.unipd.it/en/), Italy.
-* [Master Degree in Data Science](https://datascience.math.unipd.it/) of the  [Department of Mathematics "Tullio Levi-Civita"](https://www.math.unipd.it/en/), [University of Padua](https://www.unipd.it/en/), Italy.
-
-*Search Engines* is part of the teaching activities of the [Intelligent Interactive Information Access (IIIA) Hub](http://iiia.dei.unipd.it/).
-
-
 ## Group Participants
-
-- Baldan Fabio (2203580)
-- Donati Davide (2206352)
-- Garberino Alvise (2196387)
-- Padoan Giancarlo (2188345)
-- Tessari Marco (2196934)
+- Baldan Fabio (correspondant author)
+- Donati Davide 
+- Garberino Alvise
+- Padoan Giancarlo
+- Tessari Marco
 
 ## Repository Structure
 
