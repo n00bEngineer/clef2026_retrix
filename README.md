@@ -1,6 +1,8 @@
 # Retrix - Search Engines 2025/2026
 This repository contains the Retrix system that obtained the 5th place at CLEF 2026 CheckThat!
-Task 1, Source Retrieval for Scientific Web Claims. **This result has been achieved with just a pair of laptops and a RTX 3090, so it is not only easily achievable but also it beats more expensive setups of other competitors (some have multiple NVIDIA H100 GPUs).**
+Task 1, Source Retrieval for Scientific Web Claims (https://checkthat.gitlab.io/clef2026/task1/).
+
+**This result has been achieved with just a pair of laptops and a RTX 3090, so it is not only easily achievable but also it beats more expensive setups of other competitors (some have multiple NVIDIA H100 GPUs).**
 
 ![Results of all the groups partecipating in the challenge](results/screenCheckThat.png).
 
