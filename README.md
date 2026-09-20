@@ -1,6 +1,7 @@
 # Retrix - Search Engines 2025/2026
 This repository contains the Retrix system that obtained the 5th place at CLEF 2026 CheckThat!
-Task 1, Source Retrieval for Scientific Web Claims. **Note that this README has the only purpose of showing the right order of use of our retrieval system, paths can vary.**
+Task 1, Source Retrieval for Scientific Web Claims. **This result has been achieved with just a pair of laptops and a RTX 3090, so it is not only easily achievable but also it beats more expensive setups of other competitors (some have multiple NVIDIA H100 GPUs).**
+![Results of all the groups partecipating in the challenge](results/screenCheckThat.png). To have access to our fine-tuned models send an email to me or visit the Huggin face repo https://huggingface.co/fabiuz332.
 
 ## Group Participants
 - Baldan Fabio (correspondant author)
@@ -37,6 +38,7 @@ Task 1, Source Retrieval for Scientific Web Claims. **Note that this README has 
 export HF_TOKEN="hf_your_token_here"
 ```
 
+**Note that this README has the only purpose of showing the right order of use of our retrieval system, paths can vary.**
 
 ## Python Environments
 
